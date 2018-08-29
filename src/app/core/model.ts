@@ -13,6 +13,14 @@ export class Pessoa {
   nome: string;
   endereco = new Endereco();
   ativo = true;
+  rg: string;
+  cpf: string;
+  telefone: string;
+  dataNascimento: Date;
+  plano: string;
+  modalidade: string;
+  matricula: string;
+  email: string;
 }
 
 export class Categoria {

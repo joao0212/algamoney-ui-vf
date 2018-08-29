@@ -116,7 +116,7 @@ export class LancamentoCadastroComponent implements OnInit {
   novo(form: FormControl) {
     form.reset();
 
-    setTimeout(function() {
+    setTimeout(function () {
       this.lancamento = new Lancamento();
     }.bind(this), 1);
 

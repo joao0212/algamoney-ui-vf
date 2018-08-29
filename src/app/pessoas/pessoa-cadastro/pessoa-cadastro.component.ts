@@ -8,14 +8,17 @@ import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
 import { Pessoa } from './../../core/model';
+import { SelectItem } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-pessoa-cadastro',
   templateUrl: './pessoa-cadastro.component.html',
   styleUrls: ['./pessoa-cadastro.component.css']
 })
+
 export class PessoaCadastroComponent implements OnInit {
 
+  modalidade: SelectItem[];
   pessoa = new Pessoa();
 
   constructor(
@@ -25,7 +28,19 @@ export class PessoaCadastroComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private title: Title
-  ) { }
+
+  ) {
+    this.modalidade = [
+      { label: 'Vinyasa', value: 'Vinyasa' },
+      { label: 'Integrativo', value: 'Integrativo' },
+      { label: 'Ayuryoga', value: 'Ayuryoga' },
+      { label: 'Hatha', value: 'Hatha' },
+      { label: 'Power', value: 'Power' },
+      { label: 'Gestantes', value: 'Gestantes' },
+      { label: 'Yogaterapia', value: 'Yogaterapia' },
+      { label: 'Suave', value: 'Suave' }
+    ]
+  }
 
   ngOnInit() {
     const codigoPessoa = this.route.snapshot.params['codigo'];
@@ -81,7 +96,7 @@ export class PessoaCadastroComponent implements OnInit {
   nova(form: FormControl) {
     form.reset();
 
-    setTimeout(function() {
+    setTimeout(function () {
       this.pessoa = new Pessoa();
     }.bind(this), 1);
 

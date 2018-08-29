@@ -38,7 +38,6 @@
           [lazy]="true" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)"
           #tabela>
-        <p-column field="pessoa" header="Pessoa"></p-column>
         <p-column field="descricao" header="Descrição"></p-column>
         <p-column header="Vencimento" styleClass="col-data">
             <ng-template let-lanc="rowData" pTemplate="body">
