@@ -2,13 +2,10 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
 import { ToastyService } from 'ng2-toasty';
-
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
 import { Pessoa } from './../../core/model';
-import { SelectItem } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -18,7 +15,6 @@ import { SelectItem } from 'primeng/components/common/api';
 
 export class PessoaCadastroComponent implements OnInit {
 
-  modalidade: SelectItem[];
   pessoa = new Pessoa();
 
   constructor(
@@ -29,18 +25,7 @@ export class PessoaCadastroComponent implements OnInit {
     private router: Router,
     private title: Title
 
-  ) {
-    this.modalidade = [
-      { label: 'Vinyasa', value: 'Vinyasa' },
-      { label: 'Integrativo', value: 'Integrativo' },
-      { label: 'Ayuryoga', value: 'Ayuryoga' },
-      { label: 'Hatha', value: 'Hatha' },
-      { label: 'Power', value: 'Power' },
-      { label: 'Gestantes', value: 'Gestantes' },
-      { label: 'Yogaterapia', value: 'Yogaterapia' },
-      { label: 'Suave', value: 'Suave' }
-    ]
-  }
+  ) { }
 
   ngOnInit() {
     const codigoPessoa = this.route.snapshot.params['codigo'];
@@ -60,6 +45,7 @@ export class PessoaCadastroComponent implements OnInit {
     this.pessoaService.buscarPorCodigo(codigo)
       .then(pessoa => {
         this.pessoa = pessoa;
+        this.pessoa.dataNascimento = new Date(this.pessoa.dataNascimento)
         this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));

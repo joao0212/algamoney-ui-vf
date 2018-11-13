@@ -11,7 +11,6 @@ export class NaoAutorizadoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

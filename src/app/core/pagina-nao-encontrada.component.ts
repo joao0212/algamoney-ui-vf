@@ -8,5 +8,4 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class PaginaNaoEncontradaComponent {
-}
+export class PaginaNaoEncontradaComponent { }

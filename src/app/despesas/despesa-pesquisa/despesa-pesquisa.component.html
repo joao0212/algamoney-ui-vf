@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="ui-g">
+
+    <div class="ui-g-12">
+      <h1>Despesas</h1>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-dataTable [value]="despesas" [responsive]="true" emptyMessage="Nenhuma despesa encontrada" [paginator]="true" [rows]="5"
+        [lazy]="true" #tabela>
+        <p-column field="descricao" header="Descrição"></p-column>
+        <p-column header="Vencimento" styleClass="col-data">
+          <ng-template let-desp="rowData" pTemplate="body">
+            <span>{{ desp.dataVencimento | date:'dd/MM/yyyy'}}</span>
+          </ng-template>
+        </p-column>
+        <p-column header="Pagamento" styleClass="col-data">
+          <ng-template let-desp="rowData" pTemplate="body">
+            <span>{{ desp.dataPagamento | date: 'dd/MM/yyyy'}}</span>
+          </ng-template>
+        </p-column>
+        <p-column field="valor" header="Valor" styleClass="col-valor">
+          <ng-template let-desp="rowData" pTemplate="body">
+            {{ desp.valor | number:'1.2-2'}}
+          </ng-template>
+        </p-column>
+        <p-column styleClass="col-acoes">
+          <ng-template let-desp="rowData" pTemplate="body">
+            <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/despesas', desp.codigo]"></a>
+            <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(desp)"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+
+    <div class="ui-g-12">
+      <a pButton label="Lançar Despesa" routerLink="/despesas/nova"></a>
+    </div>
+  </div>
+</div>

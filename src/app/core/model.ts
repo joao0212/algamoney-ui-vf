@@ -18,23 +18,50 @@ export class Pessoa {
   telefone: string;
   dataNascimento: Date;
   plano: string;
-  modalidade: string;
   matricula: string;
   email: string;
 }
 
 export class Categoria {
   codigo: number;
+  nome: string;
 }
 
 export class Lancamento {
   codigo: number;
-  tipo = 'RECEITA';
   descricao: string;
   dataVencimento: Date;
   dataPagamento: Date;
   valor: number;
   observacao: string;
   pessoa = new Pessoa();
+}
+
+export class Despesa {
+  codigo: number;
+  descricao: string;
+  dataVencimento: Date;
+  dataPagamento: Date;
+  valor: number;
+  observacao: string;
   categoria = new Categoria();
+}
+
+export class Professor {
+  codigo: number;
+  nome: string;
+  endereco = new Endereco();
+  ativo = true;
+}
+
+export class Modalidade {
+  codigo: number;
+  nome: string;
+}
+
+export class ModalidadeProfessorPessoa {
+  codigo: number;
+  pessoa = new Pessoa();
+  professor = new Professor();
+  modalidade = new Modalidade();
 }

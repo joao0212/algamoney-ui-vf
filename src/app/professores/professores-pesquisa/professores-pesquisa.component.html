@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Professores</h1>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-dataTable [value]="professores" [responsive]="true" emptyMessage="Nenhum professor encontrado" [paginator]="true" [rows]="5"
+        #tabela>
+        <p-column field="nome" header="Nome"></p-column>
+        <p-column field="ativo" header="Status">
+          <ng-template let-prof="rowData" pTemplate="body">
+            <a href="javascript:;" [pTooltip]="prof.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top" (click)="alternarStatus(prof)">
+              {{ prof.ativo ? 'Ativo': 'Inativo'}}
+            </a>
+          </ng-template>
+        </p-column>
+        <p-column styleClass="col-acoes">
+          <ng-template let-prof="rowData" pTemplate="body">
+            <a pButton icon="fa-pencil" pToolTip="Editar" tooltipPosition="top" [routerLink]="['/professores', prof.codigo]"></a>
+            <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(prof)"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+
+    <div class="ui-g-12">
+      <a pButton label="Novo Professor" routerLink="/professores/novo"></a>
+    </div>
+  </div>
+</div>

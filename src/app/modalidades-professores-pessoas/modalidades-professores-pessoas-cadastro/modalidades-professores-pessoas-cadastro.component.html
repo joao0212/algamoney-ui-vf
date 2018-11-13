@@ -1,0 +1,33 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Novo Registro</h1>
+      </div>
+      <div class="ui-g-4 ui-fluid">
+        <label>Aluno</label>
+        <p-autoComplete name="aluno" [(ngModel)]="modalidadeProfessorPessoa.pessoa" [suggestions]="pessoas" (completeMethod)="procurarAluno($event)"
+          field="nome"></p-autoComplete>
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Modalidade</label>
+        <p-dropdown name="modalidade" [options]="modalidades" placeholder="Selecione" [autoWidth]="false" [filter]="true" [(ngModel)]="modalidadeProfessorPessoa.modalidade.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Professor</label>
+        <p-dropdown name="professor" [options]="professores" placeholder="Selecione" [autoWidth]="false" [filter]="true" [(ngModel)]="modalidadeProfessorPessoa.professor.codigo"
+          required></p-dropdown>
+      </div>
+      
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="submit" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
+        <a routerLink="/modalidadesporprofessor">Voltar para a pesquisa</a>
+      </div>
+
+    </div>
+  </form>
+</div>

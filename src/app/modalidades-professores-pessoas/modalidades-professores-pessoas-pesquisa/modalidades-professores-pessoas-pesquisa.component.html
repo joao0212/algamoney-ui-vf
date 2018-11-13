@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Relação professor / aluno</h1>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-dataTable [value]="modalidadeProfessorPessoa" [responsive]="true" emptyMessage="Nenhum registro encontrado" [paginator]="true"
+        [rows]="5" #tabela>
+        <p-column field="pessoa.nome" header="Aluno"></p-column>
+        <p-column field="modalidade.nome" header="Modalidade"></p-column>
+        <p-column field="professor.nome" header="Professor"></p-column>
+        <p-column styleClass="col-acoes">
+          <ng-template let-rel="rowData" pTemplate="body">
+            <a pButton icon="fa-pencil" pToolTip="Editar" tooltipPosition="top" [routerLink]="['/modalidadesporprofessor', rel.codigo]"></a>
+            <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(rel)"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+
+    <div class="ui-g-12">
+      <a pButton label="Novo Registro" routerLink="/modalidadesporprofessor/novo"></a>
+    </div>
+  </div>
+</div>
